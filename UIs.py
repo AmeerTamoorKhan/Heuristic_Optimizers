@@ -25,29 +25,31 @@ def bas(option='Optimize'):
         st.empty()
         st.header('BAS Background')
         st.markdown('''
-        BAS is a nature inspired heuristic algorithm. It mimics the food searching nature of the beetle. Beetle has two
-        antennae, i.e., right ($\mathbf{x_r}$) and left ($\mathbf{x_l}$) to register the smell of food and based
-        on the intensity of the smell it moves either left or right. Beetle iteratively repeats this until it reaches
-        food. BAS algorithm has been employed in numerous real-world applications and have evolved through different
-        variants.<hr>
+        <p style="text-align: justify;">BAS is a nature inspired heuristic algorithm. It mimics the food searching nature of the beetle. Beetle has two
+        antennae, i.e., right and left to register the smell of food and based on the intensity of the smell it moves 
+        either left or right. Beetle iteratively repeats this until it reaches food. BAS algorithm has been employed in
+        numerous real-world applications and have evolved through different variants.</p><hr>
         ''', unsafe_allow_html=True)
-        st.header('Beetle Searching Nature')
-        st.video(base+'/animations/BAS.mp4')
+        st.header('Beetle Food Searching Nature')
+        st.video(base+'/animations/output.mp4')
         st.markdown('''<hr>''', unsafe_allow_html=True)
 
-        col1, col2 = st.beta_columns(2)
+        col1, col3, col2 = st.beta_columns((1.5, 0.5, 1.5))
         col1.header('BAS Formulation')
         col1.markdown('''
-                <h3>Objective: </h3>\n
+                <h4>Objective: </h4>\n
                 $\\min_{\mathbf{x}} f(\mathbf{x})$ \n
+                <h4>Left & Right particle position: </h4> \n
                 $\mathbf{x_r} = \mathbf{x} + d\\times \mathbf{b}$ \n 
                 $\mathbf{x_l} = \mathbf{x} - d\\times \mathbf{b}$ \n
                 where: \n
                 $\mathbf{x}=$ Current position of serching particle (beetle) \n
                 $d=$ Length of antenna \n
                 $\mathbf{b}=$ Direction vector (Random Vector) \n
-                <h3>Update particle position: </h3> \n
+                <h4>Update particle position: </h4> \n
                 $\mathbf{x}=\mathbf{x}-d\\times b\\times sgn(f(\mathbf{x_r}) - f(\mathbf{x_l}))$ \n
+                $\\textbf{Note:}$ For max replace "-" with "+."
+                <h4>Update antenna length: </h4> \n
                 $d = a \\times d + 0.01$ \n
                 where: \n
                 $a=$ Antenna decay factor            
@@ -59,22 +61,23 @@ def bas(option='Optimize'):
                 $T, iter, dim, d, a$ \n
                 $\mathbf{x} =$ rand$(1, dim)$ \n
                 $f_{best} = f(\mathbf{x}),$ $\mathbf{x_{best}}=\mathbf{x}$ \n
-                <strong>For</strong> $i=1:T$ \n
-                <strong style="text-indent: 50px;">For</strong> $j=1:iter$ \n
-                Compute the direction vector $\mathbf{b}$ \n
-                Compute $\mathbf{x_r},$ $\mathbf{x_l}$ and $\mathbf{x}$\n  
-                Compute $fnc = f(\mathbf{x})$ \n
-                <strong>If</strong> $fnc < f_{best}$ \n
-                $f_{best} = fnc,$  $\mathbf{x_{best}} = \mathbf{x}$\n
-                <strong>End If</strong>
-                Update $d$ 
-                <strong>For End</strong> \n
-                <strong>For End</strong>
+                $\\textbf{For}$ $i=1:T$ \n
+                $\ \ \ \ \\textbf{For}$ $j=1:iter$ \n
+                $\ \ \ \ \ \ \ \ \\text{C}$ompute the direction vector $\mathbf{b}$ \n
+                $\ \ \ \ \ \ \ \ \\text{C}$ompute $\mathbf{x_r},$ $\mathbf{x_l}$ and $\mathbf{x}$\n  
+                $\ \ \ \ \ \ \ \ \\text{C}$ompute $fnc = f(\mathbf{x})$ \n
+                $\ \ \ \ \ \ \ \ \\textbf{If }$ $fnc < f_{best}$ \n
+                $\ \ \ \ \ \ \ \ \ \ \ \ f_{best} = fnc,$  $\mathbf{x_{best}} = \mathbf{x}$\n
+                $\ \ \ \ \ \ \ \ \\textbf{End If}$\n
+                $\ \ \ \ \\text{Update}$ $d$ \n
+                $\ \ \ \ \\textbf{End For}$ \n
+                $\\textbf{End For}$<hr>
                 ''', unsafe_allow_html=True)
 
         # *********************************************************************************************
         # *************************************** MATLAB Code *****************************************
         # *********************************************************************************************
+        st.title("Coding Section")
         st.markdown('''<hr><h3>MATLAB Code</h3>''', unsafe_allow_html=True)
         st.code(
             '''

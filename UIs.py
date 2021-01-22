@@ -1,11 +1,15 @@
 import streamlit as st
 
+base = '/Users/ameertamoorkhan/PycharmProjects/HeuristicOptmizers'
+
 
 def bas(option='Optimize'):
     if option == 'Optimize':
+        st.empty()
         img, tit = st.beta_columns((1, 5))
-        img.image('Images/beetle.png', width=100)
+        img.image(base+'/Images/beetle.png', width=100)
         tit.title('BAS: Beetle Antennae Search')
+        #st.video('animations/BAS.mp4')
         dim = st.sidebar.text_input('X Dimensions (dim)', 2)
         col1, col2 = st.sidebar.beta_columns(2)
         with col1:
@@ -19,15 +23,18 @@ def bas(option='Optimize'):
         return dim, T, iter, d, a
     elif option == 'Algorithm':
         st.empty()
-        head, anim = st.beta_columns((1, 1))
-        head.header('BAS Background')
-        head.markdown('''
+        st.header('BAS Background')
+        st.markdown('''
         BAS is a nature inspired heuristic algorithm. It mimics the food searching nature of the beetle. Beetle has two
-        antennae, i.e., right $\mathbf{x_r}$ and left $\mathbf{x_l}$ to register the smell of food and based
+        antennae, i.e., right ($\mathbf{x_r}$) and left ($\mathbf{x_l}$) to register the smell of food and based
         on the intensity of the smell it moves either left or right. Beetle iteratively repeats this until it reaches
-        food<hr>
+        food. BAS algorithm has been employed in numerous real-world applications and have evolved through different
+        variants.<hr>
         ''', unsafe_allow_html=True)
-        #anim.video('animations/output.mp4')
+        st.header('Beetle Searching Nature')
+        st.video(base+'/animations/BAS.mp4')
+        st.markdown('''<hr>''', unsafe_allow_html=True)
+
         col1, col2 = st.beta_columns(2)
         col1.header('BAS Formulation')
         col1.markdown('''
@@ -177,13 +184,12 @@ x_avg = np.array(X_best/T)
 
     elif option == 'Publications':
         st.empty()
-        paper1 = '''<a href="https://arxiv.org/abs/1710.10724" target="_blank"> BAS: Beetle Antennae Search Algorithm for Optimization Problems (2017) </a>'''
-        paper2 = '''<a href="https://arxiv.org/abs/1904.02397" target="_blank"> Convergence analysis of beetle antennae search algorithm and its applications (2019) </a>'''
-        paper3 = '''<a href="https://www.mdpi.com/1424-8220/19/8/1758" target="_blank"> Intelligent Beetle Antennae Search for UAV Sensing and Avoidance of Obstacles (2019) </a>'''
-        paper4 = '''<a href="https://ieeexplore.ieee.org/abstract/document/8717631" target="_blank"> A novel neural network classifier using beetle antennae search algorithm for pattern classification (2019) </a>'''
-        paper5 = '''<a href="https://arxiv.org/abs/2002.10090" target="_blank"> Multi-objective beetle antennae search algorithm (2020) </a>'''
-        paper6 = '''<a href="https://www.sciencedirect.com/science/article/pii/S0029801819306766" target="_blank"> Ship predictive collision avoidance method based on an improved beetle antennae search algorithm (2019) </a>'''
-        paper7 = '''<a href="https://www.mdpi.com/1424-8220/19/12/2727" target="_blank"> Optimized PID controller based on beetle antennae search algorithm for electro-hydraulic position servo control system (2019) </a>'''
+        paper1 = '''<a href="https://arxiv.org/abs/1710.10724" target="_blank"> Jiang, X., & Li, S. BAS: beetle antennae search algorithm for optimization problems (2017). arXiv preprint arXiv:1710.10724. </a>'''
+        paper2 = '''<a href="https://arxiv.org/abs/1904.02397" target="_blank"> Zhang, Y., Li, S., & Xu, B. (2019). Convergence analysis of beetle antennae search algorithm and its applications. arXiv preprint arXiv:1904.02397. </a>'''
+        paper3 = '''<a href="https://www.mdpi.com/1424-8220/19/8/1758" target="_blank"> Wu, Q., Shen, X., Jin, Y., Chen, Z., Li, S., Khan, A. H., & Chen, D. (2019). Intelligent beetle antennae search for UAV sensing and avoidance of obstacles. Sensors, 19(8), 1758. </a>'''
+        paper4 = '''<a href="https://ieeexplore.ieee.org/abstract/document/8717631/" target="_blank"> Wu, Q., Ma, Z., Xu, G., Li, S., & Chen, D. (2019). A novel neural network classifier using beetle antennae search algorithm for pattern classification. IEEE access, 7, 64686-64696. </a>'''
+        paper5 = '''<a href="https://www.sciencedirect.com/science/article/pii/S0029801819306766" target="_blank"> Xie, S., Chu, X., Zheng, M., & Liu, C. (2019). Ship predictive collision avoidance method based on an improved beetle antennae search algorithm. Ocean Engineering, 192, 106542. </a>'''
+        paper6 = '''<a href="https://arxiv.org/abs/2002.10090" target="_blank"> Zhang, J., Huang, Y., Ma, G., & Nener, B. (2020). Multi-objective beetle antennae search algorithm. arXiv preprint arXiv:2002.10090. </a>'''
 
 
         st.markdown(
@@ -194,8 +200,8 @@ x_avg = np.array(X_best/T)
                 <li>{paper2} </li>
                 <li>{paper3} </li>
                 <li>{paper4} </li>
-                <li>{paper6} </li>
                 <li>{paper5} </li>
+                <li>{paper6} </li>
             </ol>
             '''
         , unsafe_allow_html=True)

@@ -57,7 +57,7 @@ class BAS:
         cols = ['X_'+str(i) for i in range(np.shape(self.x_best)[1])]
         dfX = pd.DataFrame(self.x_best, columns=cols)
         col2.markdown('''<h4>X_best</h4>''', unsafe_allow_html=True)
-        col2.dataframe(dfX, height=200 )
+        col2.dataframe(dfX, height=200)
 
         st.markdown('''<h3>Plots And Charts</h3><hr>''', unsafe_allow_html=True)
         plt1, plt2 = st.beta_columns(2)
